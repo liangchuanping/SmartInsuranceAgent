@@ -20,11 +20,11 @@ public class Demo {
     	 
     	 //Convert input data set to ANN format.
     	 ANNInputDataConvert annInputDataConvert = new ANNInputDataConvert();
-    	 annInputDataConvert.Convert("dataFile/original/inputdataset.csv");
+    	 annInputDataConvert.Convert("dataFile/original/inputdatatest.csv");
     	 
     	 //Convert input data set to SVM format.
     	 SVMInputDataConvert svmInputDataConvert = new SVMInputDataConvert();
-    	 svmInputDataConvert.Convert("dataFile/original/inputdataset.csv");
+    	 svmInputDataConvert.Convert("dataFile/original/inputdatatest.csv");
     	 
     	 
     	 

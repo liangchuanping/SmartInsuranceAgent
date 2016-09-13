@@ -9,6 +9,9 @@ import java.io.FileWriter;
 public abstract class BaseConvert {
 	    String outputFilePath = "";
 	
+	    public BaseConvert(){
+	    	
+	    }
 	    public BaseConvert(String outputFile){
 	    	outputFilePath = outputFile;
 	    }
