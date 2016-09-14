@@ -1,6 +1,7 @@
-package com.sap.smartInsuranceAgent.aggregate;
+package com.sap.smartInsuranceAgent.demo;
 
 import com.sap.smartInsuranceAgent.SVM.CustomerClassificationSVM;
+import com.sap.smartInsuranceAgent.aggregate.AggregatedRecommendation;
 import com.sap.smartInsuranceAgent.dataConverter.ANNInputDataConvert;
 import com.sap.smartInsuranceAgent.dataConverter.ANNTrainDataConvert;
 import com.sap.smartInsuranceAgent.dataConverter.SVMInputDataConvert;
@@ -20,11 +21,11 @@ public class Demo {
     	 
     	 //Convert input data set to ANN format.
     	 ANNInputDataConvert annInputDataConvert = new ANNInputDataConvert();
-    	 annInputDataConvert.Convert("dataFile/original/inputdatatest.csv");
+    	 annInputDataConvert.Convert("dataFile/original/inputdata.csv");
     	 
     	 //Convert input data set to SVM format.
     	 SVMInputDataConvert svmInputDataConvert = new SVMInputDataConvert();
-    	 svmInputDataConvert.Convert("dataFile/original/inputdatatest.csv");
+    	 svmInputDataConvert.Convert("dataFile/original/inputdata.csv");
     	 
     	 
     	 

@@ -26,7 +26,7 @@ public abstract class BaseConvert {
     	 File outputFile = new File(outputFilePath);
     	 FileWriter outputFileWriter = new FileWriter(outputFile);
     	 BufferedWriter outputWriter= new BufferedWriter(outputFileWriter);
-    	 
+    	 inputReader.readLine();
     	 while(true){
     		 String dataRow = inputReader.readLine();
     		 if(dataRow != null){
