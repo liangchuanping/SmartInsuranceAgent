@@ -13,19 +13,19 @@ public class Demo {
     	  	 
     	 //Convert train data set to ANN format.
     	 ANNTrainDataConvert annTrainDataConvert = new ANNTrainDataConvert();
-    	 annTrainDataConvert.Convert("dataFile/original/datasetOr.csv");
+    	 annTrainDataConvert.convert("dataFile/original/datasetOr.csv");
     	 
     	 //Convert train data set to SVM format.
     	 SVMTrainDataConvert svmTrainDataConvert = new SVMTrainDataConvert();
-    	 svmTrainDataConvert.Convert("dataFile/original/datasetOr.csv");
+    	 svmTrainDataConvert.convert("dataFile/original/datasetOr.csv");
     	 
     	 //Convert input data set to ANN format.
     	 ANNInputDataConvert annInputDataConvert = new ANNInputDataConvert();
-    	 annInputDataConvert.Convert("dataFile/original/inputdata.csv");
+    	 annInputDataConvert.convert("dataFile/original/inputdata.csv");
     	 
     	 //Convert input data set to SVM format.
     	 SVMInputDataConvert svmInputDataConvert = new SVMInputDataConvert();
-    	 svmInputDataConvert.Convert("dataFile/original/inputdata.csv");
+    	 svmInputDataConvert.convert("dataFile/original/inputdata.csv");
     	 
     	 
     	 

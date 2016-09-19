@@ -35,6 +35,11 @@ public class CustomerClassificationANN implements LearningEventListener {
         // @param  inputsCount The input count of data.
 	    // @param  outputsCount The output count of data.
 	    	    
+		/**
+		 * @param inputsCount input layer - number of features
+		 * @param outputsCount output layer
+		 * @throws IOException
+		 */
 		public  void model(int inputsCount, int outputsCount) throws IOException{
 	    String trainingSetFileName = "dataFile/neuralNetwork/neuralNet-train.csv";
 	    String neuralNetworkModel = "dataFile/neuralNetwork/neuralNet.nnet";
@@ -90,8 +95,7 @@ public class CustomerClassificationANN implements LearningEventListener {
 	    BufferedWriter bw = new BufferedWriter(writer);	
 	    
 	    DataSet dataSet = DataSet.createFromFile(inputFile, inputsCount, outputsCount, sep);
-	    NeuralNetwork<MomentumBackpropagation> neuralNet = new NeuralNetwork<MomentumBackpropagation>();
-	 	neuralNet = (NeuralNetwork<MomentumBackpropagation>)neuralNet.createFromFile(neuralNetworkModel);	 
+	    NeuralNetwork<MomentumBackpropagation> neuralNet = (NeuralNetwork<MomentumBackpropagation>)NeuralNetwork.createFromFile(neuralNetworkModel);	 
 	 	
 	 	//Normalize the data
         Normalizer normalizer = new MaxNormalizer();
