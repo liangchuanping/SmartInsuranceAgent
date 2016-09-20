@@ -66,7 +66,7 @@ public class CustomerClassificationANN implements LearningEventListener {
 		 learningRule.setMomentum(0.24);
 		 learningRule.setLearningRate(0.31);		 
          learningRule.setMaxError(0.049);
-         learningRule.setMaxIterations(5000);
+         learningRule.setMaxIterations(100);
          
          //Train the network with training set	              
          neuralNet.learn(trainingSet);
@@ -106,9 +106,9 @@ public class CustomerClassificationANN implements LearningEventListener {
 	    	neuralNet.calculate();
 	    	double[] results = neuralNet.getOutput();	
 	    	if(results[0] >  0.9){	    		
-	    		bw.write("1 " + String.valueOf(results[0]));
+	    		bw.write("1," + String.valueOf(results[0]));
 	    	}else{
-	    		bw.write("0 " + String.valueOf(results[0]));
+	    		bw.write("0," + String.valueOf(results[0]));
 	    	}
 	    	
 	    	bw.newLine();

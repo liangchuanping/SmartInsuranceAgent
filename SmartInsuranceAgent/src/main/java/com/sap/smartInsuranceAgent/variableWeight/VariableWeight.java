@@ -169,7 +169,7 @@ public class VariableWeight {
     }
      
     private ArrayList<String> format(ArrayList<Double> variancesList){
-    	DecimalFormat df = new DecimalFormat("0.000"); 
+    	DecimalFormat df = new DecimalFormat("0.0000"); 
     	ArrayList<String> formatedVariance = new ArrayList<String>();
     	double sum = 0;
     	double sum1 = 0;

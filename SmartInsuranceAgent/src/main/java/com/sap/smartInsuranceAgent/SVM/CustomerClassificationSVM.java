@@ -20,7 +20,7 @@ public class CustomerClassificationSVM {
    // train a neuralNetwork using data in "dataFile/neuralNetwork/neuralNet-train.csv".  
    public void model() throws IOException{
 	   String trainingSetFileName = "dataFile/SVM/SVM-train";
-	   String[] trainArgs = {"-g","0.1", "-c", "0.05", "-h", "0", trainingSetFileName};
+	   String[] trainArgs = {"-h", "0", trainingSetFileName};
 	   
 	   //model will be saved in dataFile/SVM/SVM-train.model. 
 	   svm_train.main(trainArgs);	   
@@ -42,7 +42,7 @@ public class CustomerClassificationSVM {
      
    public static void main(String[] args) throws IOException{	   
 	   CustomerClassificationSVM c = new CustomerClassificationSVM();
-//	    c.run();
-	   toPredicate();
+	   c.run();
+//	   toPredicate();
    }
 }
