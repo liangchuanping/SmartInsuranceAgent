@@ -16,8 +16,8 @@ public class SVMInputDataConvert extends BaseConvert{
              
        output.append("0 ");
        
-	   for(int i = 1; i <= length; i++){
-		output.append(i+":"+inputs[i-1]+" ");		
+	   for(int i = 1; i < length; i++){
+		output.append(i+":"+inputs[i]+" ");		
 	   }			
 	   
 	   return output.toString();

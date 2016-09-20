@@ -12,7 +12,13 @@ public class ANNInputDataConvert extends BaseConvert {
 		
 	@Override
 	public String transform(String input) throws Exception {
-      String output = input + ",1";      
+      String[] strs  = input.split(",");
+      StringBuffer sb = new StringBuffer();
+      for(int i = 1; i<strs.length; i++){
+    	  sb.append(strs[i]+",");
+      }
+      
+      String output = sb.toString() + "1";      
       return output;
 	}	
 	

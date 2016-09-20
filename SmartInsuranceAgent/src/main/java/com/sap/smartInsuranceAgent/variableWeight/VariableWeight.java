@@ -11,8 +11,9 @@ import java.util.HashMap;
 
 public class VariableWeight {
 	
-     public ArrayList<String> calculate(String inputFilePath, int inputcount, int[] variableScopeList) throws IOException{
-    	  VariableWeight  variableWeight = new VariableWeight();
+     public ArrayList<String> calculate(String inputFilePath,  ArrayList<VarRange> variableScopeList) throws IOException{
+    	  int inputcount = variableScopeList.size();
+       	  VariableWeight  variableWeight = new VariableWeight();
     	  ArrayList<ArrayList<Integer>> variablesCountListList = new ArrayList<ArrayList<Integer>>();
     	  ArrayList<Integer>  intervalLengthList = new  ArrayList<Integer>(); 
     	  ArrayList<ArrayList<Double>> scopeVariablesCountList = new  ArrayList<ArrayList<Double>> ();
@@ -33,7 +34,7 @@ public class VariableWeight {
      *  
      */
      
-     private ArrayList<ArrayList<Integer>> count(String inputFilePath, int inputcount, int[] variableScopeList) throws IOException{
+     private ArrayList<ArrayList<Integer>> count(String inputFilePath, int inputcount, ArrayList<VarRange> varRangeList) throws IOException{
     	 File inputFile = new File(inputFilePath);
     	 FileReader inputFileReader = new FileReader(inputFile);
     	 BufferedReader inputReader = new BufferedReader(inputFileReader);
@@ -41,10 +42,9 @@ public class VariableWeight {
 		
 		 for(int i=0; i<inputcount; i++){
 			 HashMap<String, Integer> variablesCountMap = new  HashMap<String, Integer>();
-			 int startIndex = 2*i;
-			 int endIndex = 2*i + 1;
-			 int start = variableScopeList[startIndex];
-			 int end = variableScopeList[endIndex];
+			 VarRange varRange = varRangeList.get(i);
+			 int start = varRange.getMin();
+			 int end = varRange.getMax();
 			 
 			 for(int j=start; j<=end; j++){
 			 variablesCountMap.put(j+"", 0);			 
@@ -87,14 +87,10 @@ public class VariableWeight {
      /*calculate the length of each variable's figure region.      
      */
      
-     private ArrayList<Integer> intervalLength(int[] variableScopeList, int inputcount ){
+     private ArrayList<Integer> intervalLength(ArrayList<VarRange> varRangeList, int inputcount ){
     	 ArrayList<Integer> inputAmountList = new ArrayList<Integer>();   	 
-		 for(int i=0; i<inputcount; i++){
-			 int startIndex = 2*i;
-			 int endIndex = 2*i + 1;
-			 int start = variableScopeList[startIndex];
-			 int end = variableScopeList[endIndex];
-			 int intervalLength = end - start + 1;	
+		 for(int i=0; i<inputcount; i++){			 
+			 int intervalLength = varRangeList.get(i).getLength();	
 			 inputAmountList.add(intervalLength);
 			 }	
 		 return inputAmountList;
@@ -106,6 +102,7 @@ public class VariableWeight {
     	 ArrayList<Double> varianceList = new  ArrayList<Double>();
     	 
     	 for(int i = 0; i < variablesCountListList.size(); i++){
+    		 double variance = 0;
     		 double sum = 0;
     		 double average = 0;
     		 scopedvariablescountList = variablesCountListList.get(i);
@@ -115,7 +112,8 @@ public class VariableWeight {
     		 for(int j =0 ; j < scopedvariablescountList.size(); j++){    			 
     			 sum += Math.pow((scopedvariablescountList.get(j)-average),2);    			 		     			 
     		 }   
-    		 varianceList.add(sum/scopedvariablescountList.size());   	
+    		 variance = sum/scopedvariablescountList.size();
+    		 varianceList.add(Math.pow(variance, 0.5));   	
     	 }      	 
     	 return varianceList;
      } 
@@ -171,7 +169,7 @@ public class VariableWeight {
     }
      
     private ArrayList<String> format(ArrayList<Double> variancesList){
-    	DecimalFormat df = new DecimalFormat("0.00"); 
+    	DecimalFormat df = new DecimalFormat("0.000"); 
     	ArrayList<String> formatedVariance = new ArrayList<String>();
     	double sum = 0;
     	double sum1 = 0;
